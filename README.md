@@ -1,4 +1,4 @@
-#생활코딩
+생활코딩
 
  ## HTML 태그
   1. 브라우저에서 웹페이지 열기 `Ctrl + O`
@@ -22,29 +22,3 @@
  13. 본문에 대한 정보임을 알리는 `<head> ... </head>` 구조 태그
  14. `<body>`와 `<head>`를 감싸는 `<html> ... </html>` 태그
    - 시작 태그는 `<!doctype html>`과 같이 쓴다.
- 
-###
- 
-  <!doctype html>
-  
-   <head>
- 
-    <title> ... </title>
-    
-    <meta charset="">
-    
-   </head>
-   
-   
-   
-   <body>
- 
-    <ol>
-    
-     <li> ... </li>
-     
-    </ol>
-    
-   </body>
-  
-  </html>
