@@ -23,7 +23,7 @@
  14. <body>와 <head>를 감싸는 `<html> ... </html>` 태그
    - 시작 태그는 <!doctype html>과 같이 쓴다.
  
- ###<구조>
+###구조
  
   <!doctype html>
   
