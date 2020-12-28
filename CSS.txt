@@ -29,6 +29,73 @@
 	ㄴ 속성 안에 작성
 	ㄴ <a href="..." style="color:red; text-decoration:underline"> 과 같이 ;을 통해 구분하고 추가
 
-10. 
+10. font-size를 통해 글자 크기 지정 가능
+	ㄴ 이런 속성들을 찾기 위해 검색할 때 -> "CSS ~~~ property" 로 검색
 
-.CSS 혁명적 변화 까지 함
+11. class를 사용하여 여러개의 태그를 하나로 묶을 수 있다.
+
+12. class에 CSS를 적용하려면 .이름 으로 적용한다.
+
+13. class 속성의 내용은(이름은) 여러개로 들어올 수 있다.
+	ㄴ class = "saw" // class = "saw active" 와 같이
+	ㄴ 이 경우 CSS 선언을 .saw 와 .active 2개로 한다.
+	ㄴ 하지만 이 경우는 좋지 않다. -> 2가지를 모두 실행하기 때문에 순서에 따라 결과가 달라진다.
+	ㄴ 이를 방지하기 위해 active는 따로 id로 빼주자 
+		ㄴ class="saw" id="active"
+		ㄴ 이 경우 CSS 선언 = #active
+
+14. id 선택자 > class 선택자 > 태그 선택자
+	ㄴ id는 중복이 되면 안된다 (학번, 주민번호 와 같은 개념)
+
+15. CSS selector 라고 검색하여 선택자를 검색 가능하다.
+
+16. 속성 중 display를 통해 블럭 레벨과 인라인 레벨의 변동이 가능하다.
+
+17. CSS 선언 때 여러 태그에 중복이 있다면, (,)를 사용하여 중복 최소화 가능
+	ㄴ a {}, b {}  ---> a, b {}
+
+18. 여러 속성들을 사용할 때, 중복이 되는 것들 최소화 가능
+	ㄴ border-width, border-color, border-style -> border : width style color (순서 상관 X)
+					                       값     값      값
+ 
+19. 하나의 블럭 안에 내용에 여백을 조정하는 padding
+
+20. 블럭간의 여백을 조정하는 margin
+
+21. div태그는 아무 의미도 없고 그저 디자인을 위해 사용되는 태그이다.
+	ㄴ span태그도 동일 (div = block level // span = inline level)
+
+22. fr(프레임인듯?) 을 이용하여 자동 크기 지정이 가능하다.
+
+23. caniuse.com 을 통해 현재 기술을 사용하면 다른 사람이 많이 이용 가능한지를 확인 가능하다.
+
+24. grid라는 id를 가지는 태그 안의 ol태그 -> #grid ol { ... } 와 같이 써주기
+
+25. 반응형 디자인 가능
+
+26. 화면의 크기가 800 이상, 이하 일 때 ~~한 작업을 한다 => @media 사용
+	ㄴ @media(min-width:800px)
+	        div{ ... }                           --> 화면의 크기가 최소 800px이라면 div의 내용을 실행
+	     ㄴ == screen width > 800px  --> 화면의 크기가 800px보다 크다면 실행
+
+	ㄴ max-width:800px == screen width < 800px
+
+27. CSS또한 일일히 똑같은 코드를 집어 넣는것은 좋지 않은 방법이다.
+	ㄴ C언어의 헤더파일처럼 .css 파일을 만들어서 포함시키는 방법이 있다.
+	ㄴ <link rel="stylesheet" href="style.css"> -> link 태그를 사용하여 포함 가능
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
