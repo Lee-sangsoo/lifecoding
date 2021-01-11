@@ -1,0 +1,12 @@
+1. nodejs.org 에서 lts 파일 다운로드
+
+2. 다운 후에 cmd 창에서 "node -v" 출력되면 완료
+
+3. node 치면 여러 javascript 코드들 사용 가능
+   ㄴ Ctrl + c 두번으로 빠져 나오기 가능 (or .exit)
+
+4. cd 경로 를 통해 이동 가능
+
+5. dir로 파일 목록 확인 가능 (리눅스의 ls)
+
+6. 폴더 이동 후에 node 파일명.js 를 통해 javascript 실행 가능

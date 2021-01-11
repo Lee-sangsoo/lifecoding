@@ -52,7 +52,7 @@
 16. 속성 중 display를 통해 블럭 레벨과 인라인 레벨의 변동이 가능하다.
 
 17. CSS 선언 때 여러 태그에 중복이 있다면, (,)를 사용하여 중복 최소화 가능
-	ㄴ a {}, b {}  ---> a, b {}
+	ㄴ a {}, b {}  ---> a, b {}   (or 연산)
 
 18. 여러 속성들을 사용할 때, 중복이 되는 것들 최소화 가능
 	ㄴ border-width, border-color, border-style -> border : width style color (순서 상관 X)
@@ -70,6 +70,13 @@
 23. caniuse.com 을 통해 현재 기술을 사용하면 다른 사람이 많이 이용 가능한지를 확인 가능하다.
 
 24. grid라는 id를 가지는 태그 안의 ol태그 -> #grid ol { ... } 와 같이 써주기
+	ㄴ 이 경우는 선택자 안에 선택자인 것이고 (중첩 연산)
+	ㄴ 만약 b태그 안에 있는 codeit이라는 id가 있다면 -> b.codeit{ ... } 과 같이 적어준다.
+			(b태그이면서, codeit이라는 class를 가지는 태그 -> AND연산)
+			(class 이름이 codeit인 b태그)
+	ㄴ 태그 li의 "직속 자식 태그" i를 바꾸고 싶다 => li > i { ... }
+	ㄴ '*'를 사용하면 -> 모든 태그 (Ex) li > * = li 태그 안의 모든 직속 자식 태그
+				     li * = li 태그 안의 모든 태그
 
 25. 반응형 디자인 가능
 
@@ -84,7 +91,11 @@
 	ㄴ C언어의 헤더파일처럼 .css 파일을 만들어서 포함시키는 방법이 있다.
 	ㄴ <link rel="stylesheet" href="style.css"> -> link 태그를 사용하여 포함 가능
 
-
+28. href의 내용을 css 선택자로 사용하고 싶다면 -> [href="http://www.naver.com"]{ ... } 과 같이 사용
+	ㄴ id = #id
+	ㄴ class = .class
+	ㄴ tag = tag
+	ㄴ 나머지 = [name]
 
 
 
