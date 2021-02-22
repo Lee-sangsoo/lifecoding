@@ -3,31 +3,32 @@ var fs = require('fs');
 var url = require('url');
 var qs = require('querystring');
 
-function templateHTML(title, list, body, control){
-  return `
-  <!doctype html>
-  <html>
-  <head>
-    <title>WEB1 - ${title}</title>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <h1><a href="/">WEB</a></h1>
-    ${list}
-    ${control}
-    ${body}
-  </body>
-  </html>
-      `;
-}
-
-function makeList(filelist){
-  var list = '<ul>';
-  for(var i = 0; i<filelist.length; i++){
-    list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`
-  }
-  list = list + '</ul>';
-  return list;
+var template = {
+  html:function(title, list, body, control){
+    return `
+    <!doctype html>
+    <html>
+    <head>
+      <title>WEB1 - ${title}</title>
+      <meta charset="utf-8">
+    </head>
+    <body>
+      <h1><a href="/">WEB</a></h1>
+      ${list}
+      ${control}
+      ${body}
+    </body>
+    </html>
+        `;
+  },
+  list:function(filelist){
+    var list = '<ul>';
+    for(var i = 0; i<filelist.length; i++){
+      list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`
+    }
+    list = list + '</ul>';
+    return list;
+  },
 }
 
 // request = 요청, response = 응답
@@ -45,16 +46,16 @@ var app = http.createServer(function(request,response){
           fs.readdir('./data', function(error, filelist){
             title = 'Welcome';
             var description = 'Hello, Node.js';
-            var list = makeList(filelist);
+            var list = template.list(filelist);
             var body = `<h2>${title}</h2><p>${description}</p>`;
             var control = `<a href="/create">create</a>`;
-            var template = templateHTML(title, list, body, control);
+            var html = template.html(title, list, body, control);
             response.writeHead(200);
-            response.end(template);
+            response.end(html);
           });
         } else {
             fs.readdir('./data', function(error, filelist){
-              var list = makeList(filelist);
+              var list = template.list(filelist);
               fs.readFile(`./data/${title}`, 'utf8', function(err, description){
                 var body = `<h2>${title}</h2><p>${description}</p>`;
                 var control = `<a href="/create">create</a> 
@@ -63,16 +64,16 @@ var app = http.createServer(function(request,response){
                                 <input type="hidden" name="id" value="${title}">
                                 <input type="submit" value="delete">
                                </form>`;
-                var template = templateHTML(title, list, body, control);
+                var html = template.html(title, list, body, control);
                 response.writeHead(200);
-                response.end(template);
+                response.end(html);
               });
             });
         }
     } else if(pathname === '/create'){
       fs.readdir('./data', function(error, filelist){
         title = 'WEB - create';
-        var list = makeList(filelist);
+        var list = template.list(filelist);
         var body = `
           <form action="/create_process" method="post">
           <p><input type="text" name="title" placeholder="title"></p>
@@ -87,9 +88,9 @@ var app = http.createServer(function(request,response){
         // create 에서는 update와 create 버튼이 나오지 않아도 되기 때문에 
         // control에 넘겨주지 않는다.
           var control = ``;
-          var template = templateHTML(title, list, body, control);
+          var html = template.html(title, list, body, control);
         response.writeHead(200);
-        response.end(template);
+        response.end(html);
       });
     } else if(pathname === '/create_process'){
       var body = '';
@@ -107,7 +108,7 @@ var app = http.createServer(function(request,response){
       });
     } else if(pathname === '/update'){
       fs.readdir('./data', function(error, filelist){
-        var list = makeList(filelist);
+        var list = template.list(filelist);
         fs.readFile(`./data/${title}`, 'utf8', function(err, description){
           var body = `
           <form action="/update_process" method="post">
@@ -122,9 +123,9 @@ var app = http.createServer(function(request,response){
           </form>
           `;
           var control = `<a href="/create">create</a> <a href="/update?id=${title}">update</a>`;
-          var template = templateHTML(title, list, body, control);
+          var html = template.html(title, list, body, control);
           response.writeHead(200);
-          response.end(template);
+          response.end(html);
         });
       });
     } else if(pathname === '/update_process'){
